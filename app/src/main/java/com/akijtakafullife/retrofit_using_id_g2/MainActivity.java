@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -12,11 +13,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+    TextView a,b,c,d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        a=findViewById(R.id.resource);
+        b=findViewById(R.id.id);
+        c=findViewById(R.id.name);
+        d=findViewById(R.id.updated_at);
 
         Retrofit retrofit= new Retrofit
                 .Builder()
@@ -38,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("id", String.valueOf(objectDataClass.getId()));
                     Log.d("name", objectDataClass.getName());
                     Log.d("updated_at", objectDataClass.getUpdated_at());
+
+                    a.setText(String.valueOf(objectDataClass.getResource()));
+                    b.setText(String.valueOf(objectDataClass.getId()));
+                    c.setText(String.valueOf(objectDataClass.getName()));
+                    d.setText(String.valueOf(objectDataClass.getUpdated_at()));
 
 
 
